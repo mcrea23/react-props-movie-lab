@@ -8,7 +8,7 @@
 
 ## Introduction
 
-This is a bare-bones React application used to showcase the nine greatest movies
+This is a barebones React application used to showcase the nine greatest movies
 of all time. Your job is to update it so that it passes props from parent to
 children components correctly. In addition, you will implement default props so
 that 'bad/missing data' is properly handled - preventing our user interface from
@@ -144,54 +144,6 @@ class App extends React.Component {
 
 export default App;
 ```
-Let's see another example. Suppose you have a component called `List` instead of an `li`.
-We can also map through an array of data and return an array of JSX to dynamically create
-our `List` components. We can even pass the strings `Hello` and `Goodbye` as props:
-
-```js
-
-class List extends React.Component{
-  render(){
-    return <li>{this.props.content}</li>
-  }
-}
-
-const LIST = ["Hello", "Goodbye"]
-
-class App extends React.Component {
-  generateInnerJSX = () => {
-    return LIST.map(item => <List content={item}/>)
-  }
-
-  render() {
-    return (
-      <div>
-        {this.generateInnerJSX()}
-      </div>
-    )
-  }
-}
-```
-
-The above code is the same as below:
-
-```js
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        {[
-          <List content={"Hello"} />,
-          <List content={"Goodbye"} />
-        ]}
-      </div>
-    )
-  }
-}
-
-```
-
-We are dynamically generating an _array_ of JSX to render inside our `<div>` tag.
 
 You can do the same with `movieData`: map over the data, passing in values from
 each object as props. See the [documentation here][lists-and-keys] for
@@ -226,7 +178,7 @@ version of the movie title. All the poster image assets you need are imported in
 `MovieCard` already, but you must figure out a way get the right poster based
 on the props from `MovieShowcase` and pass it down to `CardFront`.
 
-Besides containing `CardFront` and `CardBack`, the `MovieCard` component can
+Besides containing `CardFront` and `CardBack`, the `MovieCard` conponent can
 also be used to make sure that the data being passed down to `CardFront` and
 `CardBack` is complete. For this, we can use default props. Default props allow
 us to set a default value in the event that a prop is not provided. By doing
@@ -258,7 +210,7 @@ style={{backgroundImage: `url(${prop})`}}
 In this component, you will need to render the `title`, `genres` and
 `IMDBRating`. 
 
-For `genres`, join each genre together into string with commas separating each.
+For `genres`, join each genre together into string with commans separating each.
 
 For `IMDBRating`, you will need to finish writing the method
 `generateRatingElement()`, which should do the following:
@@ -266,11 +218,6 @@ For `IMDBRating`, you will need to finish writing the method
 - if the `IMDBRating` prop is `null`, return an `<h4>` with the contents `'No Rating Found'`
 - otherwise, return `<img src={imgMapper[prop]} alt="" />` (using the correct
   prop)
-
-Just like the posters in `MovieCard`, we've provided image assets and an object, `imgMapper`,
-that includes the right images. The values of `imgMapper` can be passed directly in as
-the `src` attribute on an `img` element, but you must use the `IMDBRating` prop as the key
-to access these values.
 
 #### Once Finished
 
@@ -282,3 +229,5 @@ Check out the application and make sure everything is functioning how you would 
 
 [default props]: https://reactjs.org/docs/react-component.html#defaultprops
 [lists-and-keys]: https://reactjs.org/docs/lists-and-keys.html
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/react-props-movie-lab'>Props Lab</a> on Learn.co and start learning to code for free.</p>
